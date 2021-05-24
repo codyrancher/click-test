@@ -25,11 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
       - name: Build source
         run: make build
 
-      # Runs a set of commands using the runners shell
-      - name: Build docker
-        run: |
-          make docker-build
+      - name: Docker Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./back
+          push: true
+          tags: codyrancher/click-test:latest
