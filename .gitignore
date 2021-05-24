@@ -1,0 +1,6 @@
+node_modules
+data
+back/build
+back/src/logs
+back/public
+front/build

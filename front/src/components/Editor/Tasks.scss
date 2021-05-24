@@ -1,0 +1,13 @@
+.tasks {
+    .add {
+        position: fixed;
+
+        bottom: 5%;
+        right: 5%;
+    }
+
+    .prompt {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

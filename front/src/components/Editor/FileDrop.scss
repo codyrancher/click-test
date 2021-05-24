@@ -1,0 +1,31 @@
+.file-drop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .drop {
+        border-radius: 25px;
+        border: 4px dashed #f50057;
+    
+        width: 100%;
+        color: #f50057;
+        height: 500px;
+    
+        font-size: 48px;
+    
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &.hover .drop {
+        color: purple;
+        border-color: purple;
+    }
+
+
+    img {
+        max-width: 100%;
+    }
+}

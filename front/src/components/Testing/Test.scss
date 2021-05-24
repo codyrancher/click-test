@@ -1,0 +1,30 @@
+.test {
+    & > * {
+        margin-top: 10px;
+    }
+
+    .prompt {
+        background-color: #f5f5f5;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .map {
+        position: relative;
+
+        .region-selector {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+
+
+    .loading {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+}
