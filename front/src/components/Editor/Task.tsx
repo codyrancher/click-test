@@ -21,13 +21,15 @@ export interface Task {
 export default function Tasks() {
     const [task, setTask] = useState<Task>();
     const { name } = useParams<any>();
+    
+    useEffect(() => {  
+        const loadTask = async () => {
+            const task = await axios.get(`/api/tasks/${name}`);
+            setTask(task.data);
+        };
 
-    const loadTask = async () => {
-        const task = await axios.get(`/api/tasks/${name}`);
-        setTask(task.data);
-    };
-
-    useEffect(() => { loadTask(); }, []);
+        loadTask();
+    }, [name]);
 
     const percentage = (n:number, total:number) => {
         if (total === 0) {

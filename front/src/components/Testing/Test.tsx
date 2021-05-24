@@ -44,15 +44,13 @@ export default function Tasks() {
         return  taskList?.taskNames[step + 1];
     };
 
-    
-
-    const loadTask = async () => {
-        const task = await axios.get(`/api/tasks/${testName}`);
-        setTask(task.data);
-
-    };
-
     useEffect(() => {
+        const loadTask = async () => {
+            const task = await axios.get(`/api/tasks/${testName}`);
+            setTask(task.data);
+    
+        };
+
         loadTask();
     }, [testName]);
 
