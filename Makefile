@@ -1,6 +1,6 @@
 build:
-	cd back; npm install; npm build
-	cd front; npm install; npm build
+	cd back; npm install; npm run-script  build
+	cd front; npm install; npm run-script build
 	mkdir -p back/build/public
 	cp -r front/build/* back/build/public 
 
