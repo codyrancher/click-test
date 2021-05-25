@@ -1,8 +1,8 @@
 build:
 	cd back; npm install; npm run-script  build
 	cd front; npm install; npm run-script build
-	mkdir -p back/build/public
-	cp -r front/build/* back/build/public 
+	mkdir -p back/public
+	cp -r front/build/* back/public 
 
 docker-build:
 	cd back; docker build . -t codyrancher/click-test
