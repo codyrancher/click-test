@@ -65,7 +65,7 @@ export default function Tasks() {
                                 <Link href={`/tasks/${task.taskName}`}>{task.taskName}</Link>
                             </TableCell>
                             <TableCell className="prompt">{task.prompt}</TableCell>
-                            <TableCell><Link href={`${window.location.host}/test/task/${task?.taskName}`}>{`${window.location.host}/test/task/${task?.taskName}`}</Link></TableCell>
+                            <TableCell><Link href={`/test/task/${task?.taskName}`}>{`/test/task/${task?.taskName}`}</Link></TableCell>
                             <TableCell align="right"><Button className="remove" variant="outlined" color="secondary" onClick={() => removeTask(task)}>-</Button></TableCell>
                         </TableRow>
                     ))}
