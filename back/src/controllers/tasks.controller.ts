@@ -24,6 +24,20 @@ class CreateTaskController {
     }
   };
 
+  public delete = (req: Request, res: Response, next: NextFunction): void => {
+    try {
+      const index = tasks.findIndex(task => task.taskName === req.params.name);
+      if (index >= 0) {
+        tasks.splice(index, 1);
+        writeFile(PATH, JSON.stringify(tasks), () => {});
+      }
+
+      res.sendStatus(200);
+    } catch (error) {
+      next(error);
+    }
+  };
+
   public click = (req: Request, res: Response, next: NextFunction): void => {
     try {
       const task = tasks.find(task => task.taskName === req.params.name);

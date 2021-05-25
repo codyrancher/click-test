@@ -10,4 +10,8 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    button.remove {
+        min-width: initial;
+    }
 }

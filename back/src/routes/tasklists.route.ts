@@ -14,6 +14,7 @@ class IndexRoute implements Route {
   private initializeRoutes() {
     this.router.get(`${this.path}`, this.indexController.list);
     this.router.get(`${this.path}/:name`, this.indexController.get);
+    this.router.delete(`${this.path}/:name`, this.indexController.delete);
     this.router.post(`${this.path}`, this.indexController.post);
   }
 }

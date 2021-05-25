@@ -10,6 +10,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import Link from '@material-ui/core/Link';
 import { Task } from './Tasks';
@@ -53,6 +54,16 @@ export default function Tasklists() {
         setTasklistsOpen(tasklistsOpen.map((state, i) => i === index ? !state : state));
     };
 
+    const removeTask = async (tasklist: Tasklist) => {
+        const index = tasklists.indexOf(tasklist);
+        if (index >= 0) {
+            await axios.delete(`/api/tasklists/${tasklist.tasklistName}`);
+            const newTasklists = [...tasklists];
+            newTasklists.splice(index, 1);
+            setTasklists(newTasklists);
+        }
+    };
+
     return (
         <div className="task-lists">
             <TableContainer component={Paper}>
@@ -64,6 +75,7 @@ export default function Tasklists() {
                             <TableCell>Task Name</TableCell>
                             <TableCell>Prompt</TableCell>
                             <TableCell>Test Link</TableCell>
+                            <TableCell></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -83,6 +95,7 @@ export default function Tasklists() {
                                 <TableCell onClick={() => toggleTasklistsOpen(i)}>
                                     <Link href={`/test/task/${tasklist?.taskNames[0]}?${TASKLIST_QUERY}=${tasklist?.tasklistName}`}>{`/test/task/${tasklist?.taskNames[0]}?${TASKLIST_QUERY}=${tasklist?.tasklistName}`}</Link>
                                 </TableCell>
+                                <TableCell align="right"><Button className="remove" variant="outlined" color="secondary" onClick={() => removeTask(tasklist)}>-</Button></TableCell>
                             </TableRow>
                             {
                                 tasklistsOpen[i] ? tasklist.taskNames.map((taskName, i) => {
@@ -96,6 +109,7 @@ export default function Tasklists() {
                                             </TableCell>
                                             <TableCell className="prompt">{task.prompt}</TableCell>
                                             <TableCell><Link href={`/test/task/${task?.taskName}`}>{`/test/task/${task?.taskName}`}</Link></TableCell>
+                                            <TableCell></TableCell>
                                         </TableRow>
                                     ) : null;
                                 }) : null

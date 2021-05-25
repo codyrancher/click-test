@@ -4,6 +4,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { useHistory } from 'react-router-dom';
 import { Region } from './RegionSelector';
 import { useEffect, useState } from 'react';
+import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -33,6 +34,16 @@ export default function Tasks() {
         setTasks(tasks.data);
     };
 
+    const removeTask = async (task: Task) => {
+        const index = tasks.indexOf(task);
+        if (index >= 0) {
+            await axios.delete(`/api/tasks/${task.taskName}`);
+            const newTasks = [...tasks];
+            newTasks.splice(index, 1);
+            setTasks(newTasks);
+        }
+    };
+
     useEffect(() => { loadTasks(); }, []);
 
     return (
@@ -44,6 +55,7 @@ export default function Tasks() {
                             <TableCell>Name</TableCell>
                             <TableCell>Prompt</TableCell>
                             <TableCell>Test Link</TableCell>
+                            <TableCell></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -54,6 +66,7 @@ export default function Tasks() {
                             </TableCell>
                             <TableCell className="prompt">{task.prompt}</TableCell>
                             <TableCell><Link href={`http://${window.location.host}/test/task/${task?.taskName}`}>{`http://${window.location.host}/test/task/${task?.taskName}`}</Link></TableCell>
+                            <TableCell align="right"><Button className="remove" variant="outlined" color="secondary" onClick={() => removeTask(task)}>-</Button></TableCell>
                         </TableRow>
                     ))}
                     </TableBody>
