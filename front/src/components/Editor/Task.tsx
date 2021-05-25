@@ -77,7 +77,7 @@ export default function Tasks() {
             </div>
             <Card className="url">
                 <Box p={2}>
-                    Test URL: <Link href={`http://${window.location.host}/test/task/${task?.taskName}`}>{`http://${window.location.host}/test/task/${task?.taskName}`}</Link>
+                    Test URL: <Link href={`${window.location.host}/test/task/${task?.taskName}`}>{`${window.location.host}/test/task/${task?.taskName}`}</Link>
                 </Box>
             </Card>
             <div className="results">
