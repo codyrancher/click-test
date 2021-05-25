@@ -23,4 +23,10 @@
     .card {
         margin-bottom: 10px;
     }
+
+    .actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
 }

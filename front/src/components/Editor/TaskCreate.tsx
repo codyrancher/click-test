@@ -14,7 +14,7 @@ export default function Tasks() {
     const [file, setFile] = useState<File | null>(null);
     const [taskName, setTaskName] = useState<string>('');
     const [prompt, setPrompt] = useState<string>('');
-    const [regions, setRegions] = useState<Region[]>();
+    const [regions, setRegions] = useState<Region[]>([]);
     const history = useHistory();
 
     const onSave = async () => {
@@ -38,7 +38,7 @@ export default function Tasks() {
         ? <div className="form">
             <div><TextField label="Task Name" variant="outlined" fullWidth onChange={(e) => setTaskName(e.target.value)} value={taskName} /></div>
             <div><TextField multiline={true} label="Prompt" variant="outlined" fullWidth rows={4} onChange={(e) => setPrompt(e.target.value)} value={prompt}/></div>
-            <div><Button variant="contained" color="primary" onClick={onSave}>Save</Button></div>
+            <div className="actions"><Button variant="contained" color="primary" onClick={onSave} disabled={!prompt || !taskName || regions.length === 0}>Save</Button></div>
         </div>
         : null;
 

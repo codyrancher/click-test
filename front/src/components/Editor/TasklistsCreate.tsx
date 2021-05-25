@@ -72,7 +72,7 @@ export default function Tasks() {
                         <Button variant="outlined" color="secondary" onClick={() => removeTask(i)}>-</Button>
                     </div>
                 ))}
-                <div className="buttons"><Button variant="contained" color="default" onClick={addTask}>Add Task</Button> <Button variant="contained" color="primary" onClick={onSave}>Save</Button></div>
+                <div className="buttons"><Button variant="contained" color="default" onClick={addTask}>Add Task</Button> <Button variant="contained" color="primary" onClick={onSave} disabled={!tasklistName || taskNames.length === 0 || taskNames.every(n => !n)}>Save</Button></div>
             </div>
         </div>
     );
