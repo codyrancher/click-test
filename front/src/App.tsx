@@ -57,7 +57,7 @@ function App() {
             </Route>
             <Route>
               <Typography variant="h6">
-                Click Test Editor - Test Change
+                Click Test Editor
               </Typography>
               <Tabs value={tabValue()} onChange={handleChange}>
                 <Tab label="Tasks" />
